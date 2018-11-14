@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 // 音声ファイルの類似度判定クラス
-public class SimilarityComparer{
+public class SoundComparer{
 
     // ポケモンの鳴き声18種のファイル全てをStreamとして初期化
     public SoundComparer(){
