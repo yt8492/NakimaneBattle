@@ -28,7 +28,7 @@ class VoiceRecordDialogFragment : DialogFragment() {
         binding.playerName = playerName
         val mode = arguments?.getSerializable("mode") as? Mode
         val recorder = MediaRecorder()
-        val file = File.createTempFile("rec", ".wav", context?.cacheDir)
+        val file = File.createTempFile("rec", "voice", context?.cacheDir)
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC)
         recorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT)
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT)
