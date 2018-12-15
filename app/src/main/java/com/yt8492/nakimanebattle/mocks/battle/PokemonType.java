@@ -1,4 +1,4 @@
-package battle;
+package com.yt8492.nakimanebattle.mocks.battle;
 
 // 名前の通り, ポケモン/技のタイプの列挙
 public enum PokemonType{
@@ -23,7 +23,7 @@ public enum PokemonType{
 
     private final String typename;
 
-    private PokemonType( final String typename_ ){
+    private PokemonType(final String typename_){
         this.typename = typename_;
     }
 
