@@ -23,8 +23,10 @@ public class BattleManager{
 
     // 1ターン経過させるのに必要な全ての処理を実行
     public void Update(String selfPokemonType, String opponentPokemonType){
-        this.self.TakeDamage(PokemonType.StrToType(opponentPokemonType));
-        this.opponent.TakeDamage(PokemonType.StrToType(selfPokemonType));
+        this.self.Attack(PokemonType.StrToType(opponentPokemonType));
+        this.opponent.Attack(PokemonType.StrToType(selfPokemonType));
+        this.self.TakeDamage(opponent.Type());
+        this.opponent.TakeDamage(self.Type());
     }
 
     public void printCurrentStatus(){
