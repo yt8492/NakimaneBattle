@@ -1,4 +1,4 @@
-package sound;
+package com.yt8492.nakimanebattle.mocks.sound;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,12 +23,12 @@ public class SoundComparer{
     private List<FileInputStream> pokemonCryingFiles;
 
     // 一つのファイルをpokemonCryingFilesに読み込み
-    private loadFile( String filename ){
-        try{
-            pokemonCryingFiles.add( new FileInputStream( filename ) );
-        }
-        catch(IOException err){
-            err.printStackTrace();
-        }
-    }
+//    private loadFile( String filename ){
+//        try{
+//            pokemonCryingFiles.add( new FileInputStream( filename ) );
+//        }
+//        catch(IOException err){
+//            err.printStackTrace();
+//        }
+//    }
 }

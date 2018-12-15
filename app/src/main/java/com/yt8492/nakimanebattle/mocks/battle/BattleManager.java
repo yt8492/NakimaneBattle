@@ -2,6 +2,8 @@ package com.yt8492.nakimanebattle.mocks.battle;
 
 import java.util.HashMap;
 import java.lang.Math;
+
+import android.util.Log;
 import com.yt8492.nakimanebattle.mocks.battle.Player;
 import com.yt8492.nakimanebattle.mocks.battle.PokemonType;
 
@@ -31,8 +33,10 @@ public class BattleManager{
 
     public void printCurrentStatus(){
         // テスト出力
-        System.out.println( "your type: " + self.Type() + " HP" + self.HP() );
-        System.out.println( "opponent type: " + opponent.Type() + " HP" + opponent.HP() );
+//        System.out.println( "your type: " + self.Type() + " HP" + self.HP() );
+//        System.out.println( "opponent type: " + opponent.Type() + " HP" + opponent.HP() );
+        Log.d("debug", "your type: " + self.Type() + " HP" + self.HP());
+        Log.d("debug", "opponent type: " + opponent.Type() + " HP" + opponent.HP());
     }
 
     public Boolean isGameOver(){
