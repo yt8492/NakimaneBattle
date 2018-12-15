@@ -386,7 +386,7 @@ public class Player{
     // 攻撃処理 相手にする攻撃のタイプを返す
     // このクラス外で実行された音声比較処理が返した
     // 声に最も似たポケモンのタイプを受け取って処理する
-    public PokemonType Attack( final PokemonType attack_type ){
+    public battle.PokemonType Attack(final battle.PokemonType attack_type ){
         // 処理:未実装
         this.type = attack_type;
         return attack_type;
@@ -398,7 +398,7 @@ public class Player{
         hp = (int) ((double)hp - getEffectiveness(opponent_type) * BASE_DAMAGE);
     }
 
-    public PokemonType Type(){
+    public battle.PokemonType Type(){
         return type;
     }
 
