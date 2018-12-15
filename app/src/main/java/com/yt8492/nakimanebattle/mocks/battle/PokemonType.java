@@ -23,7 +23,7 @@ public enum PokemonType{
 
     private final String typename;
 
-    private PokemonType( final String typename_ ){
+    private PokemonType(final String typename_){
         this.typename = typename_;
     }
 
