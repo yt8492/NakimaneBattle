@@ -1,7 +1,9 @@
-package nakimane;
+package sound;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
 
 // 音声ファイルの類似度判定クラス
 public class SoundComparer{
@@ -9,7 +11,6 @@ public class SoundComparer{
     // ポケモンの鳴き声18種のファイル全てをStreamとして初期化
     public SoundComparer(){
         // 用意した18種のファイルをpokemonCryingFilesに読み込み
-        // 例外処理忘れないでね～
     }
 
     public String GetMostSimilarType( final FileInputStream inputVoice ){
@@ -19,5 +20,15 @@ public class SoundComparer{
         return "";
     }
 
-    private FileInputStream[] pokemonCryingFiles;
+    private List<FileInputStream> pokemonCryingFiles;
+
+    // 一つのファイルをpokemonCryingFilesに読み込み
+    private loadFile( String filename ){
+        try{
+            pokemonCryingFiles.add( new FileInputStream( filename ) );
+        }
+        catch(IOException err){
+            err.printStackTrace();
+        }
+    }
 }
