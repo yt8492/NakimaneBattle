@@ -1,8 +1,8 @@
-package battle;
+package com.yt8492.nakimanebattle.mocks.battle;
 
 // バトル中のプレイヤーを表すクラス
 public class Player{
-    public Player( final int hp_, final PokemonType type_ ){
+    public Player( final int hp_, final battle.PokemonType type_ ){
         this.hp = hp_;
         this.type = type_;
     }
@@ -10,7 +10,7 @@ public class Player{
     // 攻撃処理 相手にする攻撃のタイプを返す
     // このクラス外で実行された音声比較処理が返した
     // 声に最も似たポケモンのタイプを受け取って処理する
-    public PokemonType Attack( final PokemonType attack_type ){
+    public battle.PokemonType Attack(final battle.PokemonType attack_type ){
         // 処理:未実装
         this.type = attack_type;
         return attack_type;
@@ -18,11 +18,11 @@ public class Player{
 
     // ダメージを受ける処理
     // 相手のタイプを受け取って、タイプによって異なる量のhpを減らす
-    public void TakeDamage( final PokemonType opponent_type ){
+    public void TakeDamage( final battle.PokemonType opponent_type ){
         // 処理:未実装
     }
 
-    public PokemonType Type(){
+    public battle.PokemonType Type(){
         return type;
     }
 
@@ -36,5 +36,5 @@ public class Player{
     }
 
     private int hp;
-    private PokemonType type;
+    private battle.PokemonType type;
 }

@@ -1,11 +1,11 @@
-package battle;
+package com.yt8492.nakimanebattle.mocks.battle;
 
 // バトルシーンの管理クラス(大元)
 // Android実装の対戦シーンのActivityでインスタンス化して使う
 public class BattleManager{
     public BattleManager( final String selfType, final String opponentType ){
-        this.self = new Player( 150 , PokemonType.StrToType(selfType) );
-        this.opponent = new Player( 150, PokemonType.StrToType(opponentType) );
+        this.self = new Player( 150 , battle.PokemonType.StrToType(selfType) );
+        this.opponent = new Player( 150, battle.PokemonType.StrToType(opponentType) );
         // 処理:未実装
     }
 

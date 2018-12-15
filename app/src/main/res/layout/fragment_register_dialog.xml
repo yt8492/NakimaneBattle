@@ -6,11 +6,12 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_user_name"
-            android:hint="PlayerName" />
-    <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/edit_player_name_1"
+            android:hint="PlayerName1" />
+    <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_record"
-            android:text="録音"/>
+            android:id="@+id/edit_player_name_2"
+            android:hint="PlayerName2"
+    />
 </LinearLayout>
