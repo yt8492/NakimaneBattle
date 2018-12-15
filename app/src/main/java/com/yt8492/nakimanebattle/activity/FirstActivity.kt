@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import com.yt8492.nakimanebattle.R
 import com.yt8492.nakimanebattle.fragment.RegisterDialogFragment
+import com.yt8492.nakimanebattle.mocks.battle.BattleManager
 import kotlinx.android.synthetic.main.activity_first.*
 
 const val PERMISSION_CODE = 118
@@ -21,6 +22,11 @@ class FirstActivity : AppCompatActivity(), RegisterDialogFragment.DialogListener
             val dialog = RegisterDialogFragment()
             dialog.show(supportFragmentManager, RegisterDialogFragment::class.java.simpleName)
         }
+
+        val battleManager = BattleManager("water", "fire")
+        battleManager.printCurrentStatus()
+        battleManager.Update("fairy", "normal")
+        battleManager.printCurrentStatus()
     }
 
     override fun regist(player1Name: String, player2Name: String) {
