@@ -8,28 +8,31 @@ import android.os.Bundle
 import android.widget.Toast
 import com.yt8492.nakimanebattle.R
 import com.yt8492.nakimanebattle.data.Mode
-import com.yt8492.nakimanebattle.data.Player
 import com.yt8492.nakimanebattle.databinding.ActivityBattleBinding
 import com.yt8492.nakimanebattle.fragment.VoiceRecordDialogFragment
+import com.yt8492.nakimanebattle.mocks.battle.BattleManager
+import com.yt8492.nakimanebattle.mocks.battle.Player
+import com.yt8492.nakimanebattle.mocks.battle.PokemonType
 import java.io.File
 
-class BattleActivity : AppCompatActivity(), VoiceRecordDialogFragment.VoiceReceiver {
+class BattleActivity : AppCompatActivity(), VoiceRecordDialogFragment.VoiceReceiver, BattleManager.BattleStatusIndicator {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityBattleBinding>(this, R.layout.activity_battle)
         val player1Name = intent.getStringExtra("player1Name")
         val player2Name = intent.getStringExtra("player2Name")
-        val player1 = Player(player1Name)
-        val player2 = Player(player2Name)
-        binding.player1Name = player1.name
-        binding.player2Name = player2.name
-        binding.player1Hp = player1.hp
-        binding.player2Hp = player2.hp
+        val battleManager = BattleManager("normal", "normal")
+        binding.player1Name = player1Name
+        binding.player2Name = player2Name
+        binding.player1Hp = battleManager.pl1Hp
+        binding.player2Hp = battleManager.pl2Hp
+        binding.player1Type = battleManager.pl1Type.name
+        binding.player2Type = battleManager.pl2Type.name
         binding.setPlayer1Rec {
             val dialog = VoiceRecordDialogFragment()
             val bundle = Bundle()
             bundle.putSerializable("mode", Mode.PLAYER1)
-            bundle.putString("playerName", player1.name)
+            bundle.putString("playerName", player1Name)
             dialog.arguments = bundle
             dialog.show(supportFragmentManager, localClassName)
         }
@@ -37,7 +40,7 @@ class BattleActivity : AppCompatActivity(), VoiceRecordDialogFragment.VoiceRecei
             val dialog = VoiceRecordDialogFragment()
             val bundle = Bundle()
             bundle.putSerializable("mode", Mode.PLAYER2)
-            bundle.putString("playerName", player2.name)
+            bundle.putString("playerName", player2Name)
             dialog.arguments = bundle
             dialog.show(supportFragmentManager, localClassName)
         }
@@ -45,5 +48,9 @@ class BattleActivity : AppCompatActivity(), VoiceRecordDialogFragment.VoiceRecei
 
     override fun receive(file: File) {
         Toast.makeText(this, file.name + file.extension, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun update(player: com.yt8492.nakimanebattle.mocks.battle.Player?) {
+
     }
 }

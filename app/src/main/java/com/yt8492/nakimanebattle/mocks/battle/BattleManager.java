@@ -65,6 +65,22 @@ public class BattleManager{
         Log.d("debug", "pl2 type: " + pl2.Type() + " HP" + pl2.HP());
     }
 
+    public int getPl1Hp() {
+        return pl1.HP();
+    }
+
+    public int getPl2Hp() {
+        return pl2.HP();
+    }
+
+    public PokemonType getPl1Type() {
+        return pl1.Type();
+    }
+
+    public PokemonType getPl2Type() {
+        return pl2.Type();
+    }
+
     public boolean IsGameOver(){
         return this.pl1.WasKnockedDown() || this.pl2.WasKnockedDown();
     }
