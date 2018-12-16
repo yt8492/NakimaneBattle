@@ -26,7 +26,7 @@ class VoiceRecordDialogFragment : DialogFragment() {
         val view = binding.root
         val playerName = arguments?.getString("playerName") ?: ""
         binding.playerName = playerName
-        val mode = arguments?.getSerializable("mode") as? Mode
+        val mode = arguments?.getSerializable("mode") as Mode
         val recorder = MediaRecorder()
         val file = File.createTempFile("rec", "voice", context?.cacheDir)
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -48,7 +48,7 @@ class VoiceRecordDialogFragment : DialogFragment() {
         }
         builder.setView(view)
             .setPositiveButton("OK") { dialogInterface, i ->
-                listener?.receive(file)
+                listener?.receive(file, mode)
                 dialogInterface.cancel()
             }
         return builder.create()
@@ -62,6 +62,6 @@ class VoiceRecordDialogFragment : DialogFragment() {
     }
 
     interface VoiceReceiver {
-        fun receive(file: File)
+        fun receive(file: File, mode: Mode)
     }
 }

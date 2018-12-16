@@ -14,10 +14,7 @@ import com.yt8492.nakimanebattle.mocks.battle.Player
 import kotlinx.android.synthetic.main.activity_first.*
 
 const val PERMISSION_CODE = 118
-class FirstActivity : AppCompatActivity(), RegisterDialogFragment.DialogListener, BattleManager.BattleStatusIndicator {
-    override fun update(player: Player?) {
-        Log.d("debug", "Activity updated from callback")
-    }
+class FirstActivity : AppCompatActivity(), RegisterDialogFragment.DialogListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +24,6 @@ class FirstActivity : AppCompatActivity(), RegisterDialogFragment.DialogListener
             val dialog = RegisterDialogFragment()
             dialog.show(supportFragmentManager, RegisterDialogFragment::class.java.simpleName)
         }
-
-        val battleManager = BattleManager("water", "fire")
-        battleManager.setIndicator(this);
-        battleManager.PrintCurrentStatus()
-        battleManager.Update("fairy", "normal")
-        battleManager.PrintCurrentStatus()
     }
 
     override fun regist(player1Name: String, player2Name: String) {
