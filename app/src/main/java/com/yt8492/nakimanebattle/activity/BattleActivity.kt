@@ -48,8 +48,8 @@ class BattleActivity : AppCompatActivity(), VoiceRecordDialogFragment.VoiceRecei
         battleManager.setIndicator(this)
         val player1Name = intent.getStringExtra("player1Name")
         val player2Name = intent.getStringExtra("player2Name")
-        binding.player1Name = "Player1: $player1Name"
-        binding.player2Name = "Player2: $player2Name"
+        binding.player1Name = player1Name
+        binding.player2Name = player2Name
         binding.player1Hp = "HP: ${battleManager.pl1Hp}"
         binding.player2Hp = "HP: ${battleManager.pl2Hp}"
         binding.player1Type = "タイプ: ${battleManager.pl1Type.name}"
