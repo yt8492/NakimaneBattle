@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.lang.Math;
 
 import android.util.Log;
+import com.yt8492.nakimanebattle.data.Mode;
 import com.yt8492.nakimanebattle.mocks.battle.Player;
 import com.yt8492.nakimanebattle.mocks.battle.PokemonType;
 
@@ -21,7 +22,7 @@ public class BattleManager{
     // コールバックのためのI/F
     public interface BattleStatusIndicator{
         // Androidアプリ画面のバトル経過を更新(どちらか体力が減ったときなど)
-        void update( Player player );
+        void update(Mode mode,  Player player );
     }
 
     public void setIndicator( BattleStatusIndicator indicator ) {
@@ -42,20 +43,20 @@ public class BattleManager{
             // Player1のターン
             pl1.Attack( PokemonType.StrToType( pl1PokemonType ) );
             pl2.TakeDamage( pl1.Type() );
-            indicator.update( pl1 );
+            indicator.update(Mode.PLAYER1, pl1 );
             // Player2のターン
             pl2.Attack( PokemonType.StrToType( pl2PokemonType ) );
             pl1.TakeDamage( pl2.Type() );
-            indicator.update( pl2 );
+            indicator.update(Mode.PLAYER2, pl2 );
         }else{ // Player2が先制
             // Player2のターン
             pl2.Attack( PokemonType.StrToType( pl2PokemonType ) );
             pl1.TakeDamage( pl2.Type() );
-            indicator.update( pl2 );
+            indicator.update(Mode.PLAYER2, pl2 );
             // Player1のターン
             pl1.Attack( PokemonType.StrToType( pl1PokemonType ) );
             pl2.TakeDamage( pl1.Type() );
-            indicator.update( pl1 );
+            indicator.update(Mode.PLAYER1, pl1 );
         }
     }
 
@@ -63,6 +64,22 @@ public class BattleManager{
     public void PrintCurrentStatus(){
         Log.d("debug", "pl1 type: " + pl1.Type() + " HP" + pl1.HP());
         Log.d("debug", "pl2 type: " + pl2.Type() + " HP" + pl2.HP());
+    }
+
+    public int getPl1Hp() {
+        return pl1.HP();
+    }
+
+    public int getPl2Hp() {
+        return pl2.HP();
+    }
+
+    public PokemonType getPl1Type() {
+        return pl1.Type();
+    }
+
+    public PokemonType getPl2Type() {
+        return pl2.Type();
     }
 
     public boolean IsGameOver(){
